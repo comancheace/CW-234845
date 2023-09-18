@@ -8,7 +8,7 @@
 #define maximum_distance 250
 boolean goesForward = false;
 int distance = 150;
-int pos = 0;
+int pos;
 
 NewPing sonar(trig_pin, echo_pin, maximum_distance); //sensor function
 Servo myservo; //our servo name
@@ -54,10 +54,6 @@ void loop(){
   int distanceRight = 0;
   int distanceLeft = 0;
   delay(50);
-  
-  isObstacle = digitalRead(isObstaclePin);
-
-  Serial.println(isObstacle);
 
   delay(200);
   if (distance <= 20){
@@ -137,38 +133,37 @@ void moveForward(){
     delay(100);
 
     goesForward=true;
+    
     distance = readPing();
-    //Serial.println(isObstacle);
-    while (   distance > 20){
+
+    while (distance > 20){
       
-      for (pos = 0; pos <= 35; pos += 1) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
+      for (pos = 0; pos <= 35; pos += 1) {
    
       myservo4.write(pos);
       myservo5.write(pos);
-      myservo6.write(-(pos*2));          // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo6.write(-(pos*2));
+      delay(15);
       }
-      for (pos = 35; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+      for (pos = 35; pos >= 0; pos -= 1) {
       myservo4.write(pos);
       myservo5.write(pos);
-      myservo6.write(-(pos*2));           // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo6.write(-(pos*2));
+      delay(15);
       }
       
-      for (pos = 90; pos <= 120; pos += 1) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
+      for (pos = 90; pos <= 120; pos += 1) {
    
       myservo7.write(pos);
       myservo8.write(pos);
-      myservo9.write(-(pos*2));         // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo9.write(-(pos*2));
+      delay(15);
       }
-      for (pos = 120; pos >= 90; pos -= 1) { // goes from 180 degrees to 0 degrees
+      for (pos = 120; pos >= 90; pos -= 1) {
       myservo7.write(pos);
       myservo8.write(pos);
-      myservo9.write(-(pos*2));           // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo9.write(-(pos*2));
+      delay(15);
       }
     }
   }
@@ -185,34 +180,32 @@ void moveBackward(){
 
   
 
-      for (pos = 35; pos <= 0; pos += 1) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
+      for (pos = 35; pos <= 0; pos += 1) {
    
       myservo4.write(pos);
       myservo5.write(pos);
-      myservo6.write(-(pos*2));          // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo6.write(-(pos*2));
+      delay(15);
       }
-      for (pos = 0; pos >= 35; pos -= 1) { // goes from 180 degrees to 0 degrees
+      for (pos = 0; pos >= 35; pos -= 1) {
       myservo4.write(pos);
       myservo5.write(pos);
-      myservo6.write(-(pos*2));           // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo6.write(-(pos*2));
+      delay(15);
       }
       
-      for (pos = 120; pos <= 90; pos += 1) { // goes from 0 degrees to 180 degrees
-      // in steps of 1 degree
+      for (pos = 120; pos <= 90; pos += 1) {
    
       myservo7.write(pos);
       myservo8.write(pos);
-      myservo9.write(-(pos*2));         // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo9.write(-(pos*2));
+      delay(15);                      
       }
-      for (pos = 90; pos >= 120; pos -= 1) { // goes from 180 degrees to 0 degrees
+      for (pos = 90; pos >= 120; pos -= 1) {
       myservo7.write(pos);
       myservo8.write(pos);
-      myservo9.write(-(pos*2));           // tell servo to go to position in variable 'pos'
-      delay(15);                       // waits 15 ms for the servo to reach the position
+      myservo9.write(-(pos*2));        
+      delay(15);                       
       }
     
   
@@ -224,10 +217,10 @@ void turnRight(){
   delay(100);
 
   
-  myservo3.write(45);              // tell servo to go to position in variable 'pos'
-  delay(15);                       // waits 15 ms for the servo to reach the position
-  myservo3.write(25);              // tell servo to go to position in variable 'pos'
-  delay(15);                       // waits 15 ms for the servo to reach the position
+  myservo3.write(45);              
+  delay(15);                       
+  myservo3.write(25);              
+  delay(15);                      
      
   
 }
@@ -237,9 +230,9 @@ void turnLeft(){
   Serial.println("Left");
   delay(100);
 
-  myservo2.write(180);              // tell servo to go to position in variable 'pos'
+  myservo2.write(180);              
   delay(15);
   myservo2.write(200);
-  200                // waits 15 ms for the servo to reach the position
+  delay(15);
 
 }
