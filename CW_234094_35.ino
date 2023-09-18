@@ -21,7 +21,6 @@ Servo myservo7; //our servo name
 Servo myservo8; //our servo name
 Servo myservo9; //our servo name
 
-
 void setup(){
 
   Serial.begin(9600);
@@ -119,9 +118,6 @@ void moveStop(){
   
     Serial.println("Stop");
     delay(1000);
-    
-    
-
 }
 
 void moveForward(){
@@ -178,8 +174,6 @@ void moveBackward(){
 
   goesForward=false;
 
-  
-
       for (pos = 35; pos <= 0; pos += 1) {
    
       myservo4.write(pos);
@@ -206,9 +200,7 @@ void moveBackward(){
       myservo8.write(pos);
       myservo9.write(-(pos*2));        
       delay(15);                       
-      }
-    
-  
+      }  
 }
 
 void turnRight(){
@@ -216,17 +208,14 @@ void turnRight(){
   Serial.println("Right");
   delay(100);
 
-  
   myservo3.write(45);              
   delay(15);                       
   myservo3.write(25);              
-  delay(15);                      
-     
-  
+  delay(15);
 }
 
 void turnLeft(){
-
+  
   Serial.println("Left");
   delay(100);
 
@@ -234,5 +223,4 @@ void turnLeft(){
   delay(15);
   myservo2.write(200);
   delay(15);
-
 }
